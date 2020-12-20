@@ -1,0 +1,323 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: sans-serif;
+    background: #f7cea2;
+    
+}
+
+a,
+a:hover,
+a:not(href) {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+.container {
+    background: #fcdab7;
+    border-radius: 10px;
+    box-shadow: 0 2px 30px 5px rgba(0, 0, 0, 0.4);
+    display: grid;
+    position: relative;
+}
+
+.container-loading{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #fcdab7;
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9;
+    animation: fade-in 0.5s linear;
+}
+
+.container-loading div {
+    border: 14px solid #ffffff;
+    border-top: 14px solid #1d2d50;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    animation: spin 2s linear infinite;
+}
+
+.loading {
+    border: 10px solid #ffffff;
+    border-top: 10px solid #1d2d50;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 20px auto;
+    animation: spin 2s linear infinite;
+}
+
+.play-list {
+    max-height: 530px;
+    overflow-y: auto;
+}
+
+.play-list h2 {
+    padding: 15px;
+    color: #1d2d50;
+    background: #fcc58e;
+    text-align: center;
+}
+
+.play-list-content {
+    margin-top: 20px;
+    height: 388px;
+    overflow-y: auto;
+}
+
+.play-list .play-list-item a {
+    display: grid;
+    grid-template-columns: 40px auto;
+    align-items: center;
+    border-bottom: 1px solid #1d2d50;
+    padding: 8px 20px;
+    transition: all 0.3s linear;
+}
+
+.play-list .play-list-item a.active {
+    background: #fcc58e;
+}
+
+.play-list .play-list-item h4 {
+    color: #1d2d50;
+    margin-left: 8px;
+}
+
+.play-list .play-list-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.play-list-btn{
+    padding: 10px;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+}
+
+.play-list-btn input{
+    display: none;
+    width: 0;
+    opacity: 0;
+}
+
+.play-list-btn label,
+.play-list-btn button{
+    display: inline-block;
+    padding: 12px 30px;
+    background: #133b5c;
+    font-size: 14px;
+    color: #fcdab7;
+    border-radius: 4px;
+    transition: all 0.3s linear;
+    cursor: pointer;
+    border: none;
+}
+
+.play-list-btn label:hover{
+    background: #1d2d50;
+}
+
+.player {
+    position: relative;
+    width: 100%;
+    height: 530px;
+    background: #133b5c;
+}
+
+
+.cover {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    top: 50px;
+    transform: translateX(-50%);
+    box-shadow: 0 2px 30px 5px rgba(0, 0, 0, 0.4);
+}
+
+.cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.info {
+    position: absolute;
+    left: 50%;
+    top: 240px;
+    transform: translateX(-50%);
+    text-align: center;
+}
+.info .title {
+    font-size: 20px;
+    color: #f7cea2;
+    font-weight: 700;
+    margin-top: 25px;
+}
+
+.info .singer {
+    font-size: 20px;
+    color: #f7cea2;
+}
+
+.btn-box {
+    position: absolute;
+    top: 330px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 30px 30px 30px;
+    justify-content: space-around;
+}
+.btn-box svg {
+    width: 30px;
+    fill: #fcdab7;
+    transition: all 0.3s linear;
+    cursor: pointer;
+}
+.btn-box span.active svg {
+    fill: #fca54e;
+}
+.favorite.active svg {
+    fill: #ff2323 !important;
+}
+.volume-box {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 295px;
+    transform: translateX(-50%);
+    z-index: 1;
+    padding: 0 20px;
+}
+.volume-down {
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    
+    cursor: pointer;
+}
+.volume-up {
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    
+    cursor: pointer;
+}
+.volume-up::selection {
+    background-color: unset;
+}
+
+.volume-box.active {
+    display: block;
+}
+.volume-box svg {
+    width: 20px;
+}
+.music-box {
+    position: absolute;
+    left: 50%;
+    width: 220px;
+    top: 385px;
+    transform: translateX(-50%);
+}
+
+.current-time {
+    position: absolute;
+    left: -35px;
+    top: 50%;
+    color: #ffffff;
+    font-size: 12px;
+    transform: translateY(-50%);
+}
+.duration {
+    position: absolute;
+    right: -35px;
+    top: 50%;
+    color: #ffffff;
+    font-size: 12px;
+    transform: translateY(-50%);
+}
+.play,
+.pause {
+    position: absolute;
+    left: 50%;
+    top: 55px;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: all 0.3s linear;
+}
+.play,
+.pause svg {
+    width: 45px;
+    fill: #fcdab7;
+}
+
+@media only screen and (max-width: 568px) {
+    .container {
+        width: 95%;
+        margin: 20px 2.5%;
+    }
+    .play-list h2 {
+        border-radius: 10px 10px 0 0;
+    }
+    .player {
+        border-radius: 0 0 9px 9px;
+    }
+}
+
+@media only screen and (min-width: 568px) {
+    .container {
+        width: 95%;
+        margin: 20px 2.5%;
+        grid-template-columns: 35% 65%;
+    }
+    .play-list h2 {
+        border-radius: 10px 0 0 0;
+    }
+    .player {
+        border-radius: 0 9px 9px 0;
+    }
+}
+@media only screen and (min-width: 768px) {
+    .container {
+        width: 90%;
+        margin: 20px 5%;
+    }
+}
+@media only screen and (min-width: 992px) {
+    .container {
+        width: 85%;
+        margin: 20px 7.5%;
+    }
+}
+@media only screen and (min-width: 1200px) {
+    .container {
+        width: 80%;
+        margin: 20px 10%;
+    }
+}
